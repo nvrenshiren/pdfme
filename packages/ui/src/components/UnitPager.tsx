@@ -1,9 +1,8 @@
 import React from 'react';
 import { Size } from '@pdfme/common';
-import { theme, Typography, Button } from 'antd';
+import { useTheme } from '../contexts.js';
+import { Text, Button } from './primitives/index.js';
 import { ChevronLeft, ChevronRight, ChevronsLeft, ChevronsRight } from 'lucide-react';
-
-const { Text } = Typography;
 
 type UnitButtonProps = {
   type: 'left' | 'right' | 'doubleLeft' | 'doubleRight';
@@ -37,9 +36,9 @@ type Props = {
 };
 
 const UnitPager = ({ size, unitCursor, unitNum, setUnitCursor }: Props) => {
-  if (unitNum <= 1) return null;
+  const token = useTheme();
 
-  const { token } = theme.useToken();
+  if (unitNum <= 1) return null;
 
   const buttonWrapStyle: React.CSSProperties = {
     pointerEvents: 'initial',

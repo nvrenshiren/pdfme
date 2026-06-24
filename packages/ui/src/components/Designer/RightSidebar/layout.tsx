@@ -1,5 +1,5 @@
 import React from 'react';
-import { Divider } from 'antd';
+import { Divider } from '../../primitives/index.js';
 
 export const SIDEBAR_H_PADDING_PX = 16;
 export const SIDEBAR_V_PADDING_PX = 8;

@@ -4,13 +4,6 @@ import PluginIcon from '../../src/components/Designer/PluginIcon';
 import { Plugin, Schema } from '@pdfme/common';
 import { OptionsContext } from '../../src/contexts';
 
-// Mock Ant Design theme
-vi.mock('antd', () => ({
-  theme: {
-    useToken: () => ({ token: { colorText: '#000' } }),
-  },
-}));
-
 const mockPlugin: Plugin<Schema> = {
   propPanel: {
     schema: {},

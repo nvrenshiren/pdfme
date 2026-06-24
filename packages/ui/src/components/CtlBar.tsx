@@ -12,13 +12,10 @@ import {
   MoveVertical,
 } from 'lucide-react';
 
-import type { MenuProps } from 'antd';
-import { theme, Typography, Button, Dropdown, Tooltip } from 'antd';
-import { I18nContext } from '../contexts.js';
+import { Text, Button, Dropdown, Tooltip, type MenuItem } from './primitives/index.js';
+import { I18nContext, useTheme } from '../contexts.js';
 import { MIN_ZOOM, type ZoomMode, useMaxZoom } from '../helper.js';
 import { UI_CLASSNAME } from '../constants.js';
-
-const { Text } = Typography;
 
 type TextStyle = { color: string; fontSize: number; margin: number };
 const CONTROL_BUTTON_SIZE = 32;
@@ -116,6 +113,7 @@ const Zoom = ({
       </ToolbarButton>
       <Text
         strong
+        className={UI_CLASSNAME + 'zoom-label'}
         style={{
           ...style.textStyle,
           minWidth: 44,
@@ -198,7 +196,7 @@ const Pager = ({ pageCursor, pageNum, setPageCursor, style }: PagerProps) => {
 };
 
 type ContextMenuProps = {
-  items: MenuProps['items'];
+  items: MenuItem[];
   style: { textStyle: TextStyle };
 };
 const ContextMenu = ({ items, style }: ContextMenuProps) => (
@@ -228,7 +226,7 @@ type CtlBarProps = {
 };
 
 const CtlBar = (props: CtlBarProps) => {
-  const { token } = theme.useToken();
+  const token = useTheme();
   const i18n = useContext(I18nContext);
 
   const {
@@ -245,7 +243,7 @@ const CtlBar = (props: CtlBarProps) => {
     removePage,
   } = props;
 
-  const contextMenuItems: MenuProps['items'] = [];
+  const contextMenuItems: MenuItem[] = [];
   if (addPageAfter) {
     contextMenuItems.push({
       key: '1',

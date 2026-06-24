@@ -1,33 +1,24 @@
-import { useForm } from 'form-render';
-import type { Schema as FormRenderSchema } from 'form-render';
 import React, { useRef, useContext, useEffect, useCallback, useMemo } from 'react';
-import type {
-  Dict,
-  ChangeSchemaItem,
-  SchemaForUI,
-  PropPanelWidgetProps,
-  PropPanelSchema,
-  Schema,
-} from '@pdfme/common';
+import type { Dict, ChangeSchemaItem, SchemaForUI, PropPanelSchema, Schema } from '@pdfme/common';
 import { isBlankPdf } from '@pdfme/common';
 import { TEXT_OVERFLOW_EXPAND, TEXT_OVERFLOW_VISIBLE } from '@pdfme/schemas/texts';
 import type { SidebarProps } from '../../../../types.js';
 import { Menu } from 'lucide-react';
-import { I18nContext, PluginsRegistry, OptionsContext } from '../../../../contexts.js';
+import { I18nContext, PluginsRegistry, OptionsContext, useTheme } from '../../../../contexts.js';
 import { debounce } from '../../../../helper.js';
 import { DESIGNER_CLASSNAME } from '../../../../constants.js';
-import { theme, Typography, Button, Divider } from 'antd';
+import { Text, Button, Divider } from '../../../primitives/index.js';
 import AlignWidget from './AlignWidget.js';
 import WidgetRenderer from './WidgetRenderer.js';
 import ButtonGroupWidget from './ButtonGroupWidget.js';
 import { expandSameTypeBulkUpdateChanges } from './schemaChangeHelpers.js';
-import { InternalNamePath, ValidateErrorEntity } from 'rc-field-form/es/interface.js';
+import FormRenderComponent, {
+  useForm,
+  type FormWidgets,
+  type NamePath,
+  type ValidateErrorEntity,
+} from './form/index.js';
 import { SidebarBody, SidebarFrame, SidebarHeader, SIDEBAR_H_PADDING_PX } from '../layout.js';
-
-// Import FormRender as a default import
-import FormRenderComponent from 'form-render';
-
-const { Text } = Typography;
 
 const TEXT_OVERFLOW_EXPAND_SCHEMA_TYPES = new Set(['text', 'multiVariableText']);
 
@@ -45,15 +36,14 @@ type DetailViewProps = Pick<
   activeSchema: SchemaForUI;
 };
 
-type WidgetMap = Record<string, (props: PropPanelWidgetProps) => React.JSX.Element>;
 const getElementIds = (elements: HTMLElement[]) => elements.map(({ id }) => id);
 
 const DetailView = (props: DetailViewProps) => {
-  const { token } = theme.useToken();
+  const token = useTheme();
 
   const { schemasList, changeSchemas, deselectSchema, activeSchema, pageSize, basePdf } = props;
   const formInstance = useForm();
-  // form-render returns a new wrapper each render; keep one so schema updates do not reset focused fields.
+  // useForm returns a stable instance; pin it via ref so schema updates never reset focused fields.
   const formRef = useRef(formInstance);
   const form = formRef.current;
 
@@ -87,14 +77,15 @@ const DetailView = (props: DetailViewProps) => {
     [i18n],
   );
 
-  const widgets = useMemo<WidgetMap>(() => {
-    const newWidgets: WidgetMap = {
+  const widgets = useMemo<FormWidgets>(() => {
+    const newWidgets: FormWidgets = {
       AlignWidget: (p) => (
         <AlignWidget
-          {...p}
-          {...props}
+          schema={p.schema}
+          activeElements={props.activeElements}
+          schemas={props.schemas}
+          pageSize={props.pageSize}
           changeSchemas={changeSchemasWithSameTypeSelection}
-          options={options}
         />
       ),
       Divider: () => (
@@ -102,23 +93,26 @@ const DetailView = (props: DetailViewProps) => {
       ),
       ButtonGroup: (p) => (
         <ButtonGroupWidget
-          {...p}
-          {...props}
+          schema={p.schema}
+          activeElements={props.activeElements}
+          activeSchema={props.activeSchema}
+          schemas={props.schemas}
           changeSchemas={changeSchemasWithSameTypeSelection}
-          options={options}
         />
       ),
     };
     for (const plugin of pluginsRegistry.values()) {
-      const pluginWidgets = (plugin.propPanel.widgets ?? {}) as Record<
-        string,
-        (props: PropPanelWidgetProps) => void
-      >;
+      const pluginWidgets = plugin.propPanel.widgets ?? {};
       Object.entries(pluginWidgets).forEach(([widgetKey, widgetValue]) => {
         newWidgets[widgetKey] = (p) => (
           <WidgetRenderer
-            {...p}
-            {...props}
+            schema={p.schema}
+            value={p.value}
+            onChange={p.onChange}
+            activeSchema={props.activeSchema}
+            activeElements={props.activeElements}
+            schemas={props.schemas}
+            basePdf={props.basePdf}
             changeSchemas={changeSchemasWithSameTypeSelection}
             options={options}
             theme={token}
@@ -200,9 +194,11 @@ const DetailView = (props: DetailViewProps) => {
     return true;
   };
 
-  // Use explicit type for debounce function that matches the expected signature
-  const handleWatch = debounce(function (...args: unknown[]) {
-    const formSchema = args[0] as Record<string, unknown>;
+  // Keep the watch logic in a ref so the debounced wrapper can be created once.
+  // Re-creating `debounce(...)` every render would reset its 100ms timer on each
+  // keystroke, so trailing changes could be dropped.
+  const watchLogicRef = useRef<(formSchema: Record<string, unknown>) => void>(() => {});
+  watchLogicRef.current = (formSchema: Record<string, unknown>) => {
     const formAndSchemaValuesDiffer = (formValue: unknown, schemaValue: unknown): boolean => {
       if (typeof formValue === 'object' && formValue !== null) {
         return JSON.stringify(formValue) !== JSON.stringify(schemaValue);
@@ -261,7 +257,7 @@ const DetailView = (props: DetailViewProps) => {
           if (reason.errorFields.length) {
             changes = changes.filter(
               (change: ChangeSchemaItem) =>
-                !reason.errorFields.find((field: { name: InternalNamePath; errors: string[] }) =>
+                !reason.errorFields.find((field: { name: NamePath; errors: string[] }) =>
                   field.name.includes(change.key),
                 ),
             );
@@ -271,7 +267,15 @@ const DetailView = (props: DetailViewProps) => {
           }
         });
     }
-  }, 100);
+  };
+  const handleWatch = useMemo(
+    () =>
+      debounce(
+        (...args: unknown[]) => watchLogicRef.current(args[0] as Record<string, unknown>),
+        100,
+      ),
+    [],
+  );
 
   const activePlugin = pluginsRegistry.findByType(activeSchema.type);
   if (!activePlugin) {
@@ -517,7 +521,7 @@ const DetailView = (props: DetailViewProps) => {
       <SidebarBody>
         <FormRenderComponent
           form={form}
-          schema={propPanelSchema as unknown as FormRenderSchema}
+          schema={propPanelSchema}
           widgets={widgets}
           watch={{ '#': handleWatch }}
           locale="en-US"

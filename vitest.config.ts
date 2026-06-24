@@ -172,22 +172,6 @@ export default defineConfig({
     alias: [
       ...pdfmeAliases,
       {
-        find: /^antd\/es\//,
-        replacement: 'antd/lib/',
-      },
-      {
-        find: /^form-render$/,
-        replacement: path.resolve(repoRoot, 'packages/ui/__mocks__/form-render.ts'),
-      },
-      {
-        find: /^form-render\/es\//,
-        replacement: 'form-render/lib/',
-      },
-      {
-        find: /^rc-picker\/es\//,
-        replacement: 'rc-picker/lib/',
-      },
-      {
         find: /^lodash-es$/,
         replacement: 'lodash',
       },

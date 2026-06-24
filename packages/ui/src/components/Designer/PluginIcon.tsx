@@ -1,7 +1,6 @@
 import React, { useContext, useMemo } from 'react';
 import { Plugin, Schema } from '@pdfme/common';
-import { OptionsContext } from '../../contexts.js';
-import { theme } from 'antd';
+import { OptionsContext, useTheme } from '../../contexts.js';
 import DOMPurify from 'dompurify';
 
 interface PluginIconProps {
@@ -108,7 +107,7 @@ const SVGIcon = ({
 
 const PluginIcon = (props: PluginIconProps) => {
   const { plugin, label, size, styles } = props;
-  const { token } = theme.useToken();
+  const token = useTheme();
   const options = useContext(OptionsContext);
 
   const schemaType = plugin.propPanel.defaultSchema?.type ?? '';

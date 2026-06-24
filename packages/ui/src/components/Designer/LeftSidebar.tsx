@@ -1,12 +1,12 @@
 import React, { useContext, useState, useEffect } from 'react';
 import { Schema, Plugin, BasePdf, getFallbackFontName } from '@pdfme/common';
-import { theme, Button } from 'antd';
+import { Button } from '../primitives/index.js';
 import { useDraggable } from '@dnd-kit/core';
 import { CSS } from '@dnd-kit/utilities';
 import Renderer from '../Renderer.js';
 import { LEFT_SIDEBAR_WIDTH, DESIGNER_CLASSNAME } from '../../constants.js';
 import { setFontNameRecursively } from '../../helper';
-import { OptionsContext, PluginsRegistry } from '../../contexts.js';
+import { OptionsContext, PluginsRegistry, useTheme } from '../../contexts.js';
 import PluginIcon from './PluginIcon.js';
 
 const Draggable = (props: {
@@ -16,7 +16,7 @@ const Draggable = (props: {
   children: React.ReactNode;
 }) => {
   const { scale, basePdf, plugin } = props;
-  const { token } = theme.useToken();
+  const token = useTheme();
   const options = useContext(OptionsContext);
   const defaultSchema = plugin.propPanel.defaultSchema;
   if (options.font) {
@@ -63,7 +63,7 @@ const LeftSidebar = ({
   scale: number;
   basePdf: BasePdf;
 }) => {
-  const { token } = theme.useToken();
+  const token = useTheme();
   const pluginsRegistry = useContext(PluginsRegistry);
   const [isDragging, setIsDragging] = useState(false);
 

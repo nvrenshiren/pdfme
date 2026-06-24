@@ -4,7 +4,7 @@ import SelectoComponent, {
   OnDragStart as SelectoOnDragStart,
 } from 'react-selecto';
 import { SELECTABLE_CLASSNAME } from '../../../constants.js';
-import { theme } from 'antd';
+import { useTheme } from '../../../contexts.js';
 
 const SelectoView = SelectoComponent as unknown as React.ElementType;
 
@@ -18,7 +18,7 @@ type Props = {
 const className = 'pdfme-selecto';
 
 const Selecto = (props: Props) => {
-  const { token } = theme.useToken();
+  const token = useTheme();
   useEffect(() => {
     const containerElement = document.querySelector('.' + className);
     if (containerElement instanceof HTMLElement) {

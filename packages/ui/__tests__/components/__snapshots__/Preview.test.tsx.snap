@@ -23,54 +23,76 @@ exports[`Preview(as Form) snapshot 1`] = `
           <div
             style="display: flex; align-items: center; justify-content: center; flex-wrap: wrap; row-gap: 0px;"
           >
-            <button
-              aria-label="Zoom out"
-              class="ant-btn ant-btn-text ant-btn-color-default ant-btn-variant-text pdfme-ui-zoom-out"
-              style="width: 32px; min-width: 32px; height: 32px; padding: 0px;"
-              title="Zoom out"
-              type="button"
-            >
-              Minus
-            </button>
             <span
-              class="ant-typography"
-              style="color: rgb(255, 255, 255); font-size: 14px; margin: 8px; min-width: 44px; text-align: center; white-space: nowrap;"
+              style="display: inline-flex;"
             >
-              <strong>
-                100
-                %
-              </strong>
+              <button
+                aria-label="Zoom out"
+                class="pdfme-ui-zoom-out"
+                style="display: inline-flex; align-items: center; justify-content: center; gap: 0px; cursor: pointer; font-size: 14px; line-height: 1; border-radius: 6px; height: 32px; padding: 0px; box-sizing: border-box; transition: all 0.1s; opacity: 1; user-select: none; white-space: nowrap; background: transparent; border: 1px solid transparent; color: rgba(0, 0, 0, 0.88); width: 32px; min-width: 32px;"
+                title="Zoom out"
+                type="button"
+              >
+                <span>
+                  Minus
+                </span>
+              </button>
             </span>
-            <button
-              aria-label="Zoom in"
-              class="ant-btn ant-btn-text ant-btn-color-default ant-btn-variant-text pdfme-ui-zoom-in"
-              style="width: 32px; min-width: 32px; height: 32px; padding: 0px;"
-              title="Zoom in"
-              type="button"
+            <span
+              class="pdfme-ui-zoom-label"
+              style="color: rgb(255, 255, 255); font-weight: 600; font-size: 14px; margin: 8px; min-width: 44px; text-align: center; white-space: nowrap;"
             >
-              Plus
-            </button>
+              100
+              %
+            </span>
+            <span
+              style="display: inline-flex;"
+            >
+              <button
+                aria-label="Zoom in"
+                class="pdfme-ui-zoom-in"
+                style="display: inline-flex; align-items: center; justify-content: center; gap: 0px; cursor: pointer; font-size: 14px; line-height: 1; border-radius: 6px; height: 32px; padding: 0px; box-sizing: border-box; transition: all 0.1s; opacity: 1; user-select: none; white-space: nowrap; background: transparent; border: 1px solid transparent; color: rgba(0, 0, 0, 0.88); width: 32px; min-width: 32px;"
+                title="Zoom in"
+                type="button"
+              >
+                <span>
+                  Plus
+                </span>
+              </button>
+            </span>
             <div
               style="width: 1px; height: 24px; margin: 0px 6px; background-color: rgb(255, 255, 255); opacity: 0.45;"
             />
-            <button
-              aria-label="Fit width"
-              class="ant-btn ant-btn-text ant-btn-color-default ant-btn-variant-text pdfme-ui-fit-width"
-              style="width: 32px; min-width: 32px; height: 32px; padding: 0px;"
-              title="Fit width"
-              type="button"
+            <span
+              style="display: inline-flex;"
             >
-              MoveHorizontal
-            </button>
-            <button
-              aria-label="Fit height"
-              class="ant-btn ant-btn-text ant-btn-color-default ant-btn-variant-text pdfme-ui-fit-height"
-              style="width: 32px; min-width: 32px; height: 32px; padding: 0px;"
-              title="Fit height"
-              type="button"
+              <button
+                aria-label="Fit width"
+                class="pdfme-ui-fit-width"
+                style="display: inline-flex; align-items: center; justify-content: center; gap: 0px; cursor: pointer; font-size: 14px; line-height: 1; border-radius: 6px; height: 32px; padding: 0px; box-sizing: border-box; transition: all 0.1s; opacity: 1; user-select: none; white-space: nowrap; background: transparent; border: 1px solid transparent; color: rgba(0, 0, 0, 0.88); width: 32px; min-width: 32px;"
+                title="Fit width"
+                type="button"
+              >
+                <span>
+                  MoveHorizontal
+                </span>
+              </button>
+            </span>
+            <span
+              style="display: inline-flex;"
             >
-              MoveVertical
-            </button>
+              <button
+                aria-label="Fit height"
+                class="pdfme-ui-fit-height"
+                style="display: inline-flex; align-items: center; justify-content: center; gap: 0px; cursor: pointer; font-size: 14px; line-height: 1; border-radius: 6px; height: 32px; padding: 0px; box-sizing: border-box; transition: all 0.1s; opacity: 1; user-select: none; white-space: nowrap; background: transparent; border: 1px solid transparent; color: rgba(0, 0, 0, 0.88); width: 32px; min-width: 32px;"
+                title="Fit height"
+                type="button"
+              >
+                <span>
+                  MoveVertical
+                </span>
+              </button>
+            </span>
           </div>
         </div>
       </div>
@@ -88,7 +110,7 @@ exports[`Preview(as Form) snapshot 1`] = `
             <div
               class="selectable"
               id="1"
-              style="position: absolute; cursor: pointer; height: 56.692913386499995px; width: 377.95275591px; top: 75.590551182px; left: 75.590551182px; transform: rotate(0deg); opacity: 1; outline: 1px dashed #1677ff;"
+              style="position: absolute; cursor: pointer; height: 56.692913386499995px; width: 377.95275591px; top: 75.590551182px; left: 75.590551182px; transform: rotate(0deg); opacity: 1; outline: 1px dashed #38a0ff;"
               title="field1"
             >
               <div
@@ -110,7 +132,7 @@ exports[`Preview(as Form) snapshot 1`] = `
             <div
               class="selectable"
               id="2"
-              style="position: absolute; cursor: pointer; height: 151.181102364px; width: 377.95275591px; top: 132.2834645685px; left: 75.590551182px; transform: rotate(0deg); opacity: 1; outline: 1px dashed #1677ff;"
+              style="position: absolute; cursor: pointer; height: 151.181102364px; width: 377.95275591px; top: 132.2834645685px; left: 75.590551182px; transform: rotate(0deg); opacity: 1; outline: 1px dashed #38a0ff;"
               title="field2"
             >
               <div
@@ -162,54 +184,76 @@ exports[`Preview(as Viewer) snapshot 1`] = `
           <div
             style="display: flex; align-items: center; justify-content: center; flex-wrap: wrap; row-gap: 0px;"
           >
-            <button
-              aria-label="Zoom out"
-              class="ant-btn ant-btn-text ant-btn-color-default ant-btn-variant-text pdfme-ui-zoom-out"
-              style="width: 32px; min-width: 32px; height: 32px; padding: 0px;"
-              title="Zoom out"
-              type="button"
-            >
-              Minus
-            </button>
             <span
-              class="ant-typography"
-              style="color: rgb(255, 255, 255); font-size: 14px; margin: 8px; min-width: 44px; text-align: center; white-space: nowrap;"
+              style="display: inline-flex;"
             >
-              <strong>
-                100
-                %
-              </strong>
+              <button
+                aria-label="Zoom out"
+                class="pdfme-ui-zoom-out"
+                style="display: inline-flex; align-items: center; justify-content: center; gap: 0px; cursor: pointer; font-size: 14px; line-height: 1; border-radius: 6px; height: 32px; padding: 0px; box-sizing: border-box; transition: all 0.1s; opacity: 1; user-select: none; white-space: nowrap; background: transparent; border: 1px solid transparent; color: rgba(0, 0, 0, 0.88); width: 32px; min-width: 32px;"
+                title="Zoom out"
+                type="button"
+              >
+                <span>
+                  Minus
+                </span>
+              </button>
             </span>
-            <button
-              aria-label="Zoom in"
-              class="ant-btn ant-btn-text ant-btn-color-default ant-btn-variant-text pdfme-ui-zoom-in"
-              style="width: 32px; min-width: 32px; height: 32px; padding: 0px;"
-              title="Zoom in"
-              type="button"
+            <span
+              class="pdfme-ui-zoom-label"
+              style="color: rgb(255, 255, 255); font-weight: 600; font-size: 14px; margin: 8px; min-width: 44px; text-align: center; white-space: nowrap;"
             >
-              Plus
-            </button>
+              100
+              %
+            </span>
+            <span
+              style="display: inline-flex;"
+            >
+              <button
+                aria-label="Zoom in"
+                class="pdfme-ui-zoom-in"
+                style="display: inline-flex; align-items: center; justify-content: center; gap: 0px; cursor: pointer; font-size: 14px; line-height: 1; border-radius: 6px; height: 32px; padding: 0px; box-sizing: border-box; transition: all 0.1s; opacity: 1; user-select: none; white-space: nowrap; background: transparent; border: 1px solid transparent; color: rgba(0, 0, 0, 0.88); width: 32px; min-width: 32px;"
+                title="Zoom in"
+                type="button"
+              >
+                <span>
+                  Plus
+                </span>
+              </button>
+            </span>
             <div
               style="width: 1px; height: 24px; margin: 0px 6px; background-color: rgb(255, 255, 255); opacity: 0.45;"
             />
-            <button
-              aria-label="Fit width"
-              class="ant-btn ant-btn-text ant-btn-color-default ant-btn-variant-text pdfme-ui-fit-width"
-              style="width: 32px; min-width: 32px; height: 32px; padding: 0px;"
-              title="Fit width"
-              type="button"
+            <span
+              style="display: inline-flex;"
             >
-              MoveHorizontal
-            </button>
-            <button
-              aria-label="Fit height"
-              class="ant-btn ant-btn-text ant-btn-color-default ant-btn-variant-text pdfme-ui-fit-height"
-              style="width: 32px; min-width: 32px; height: 32px; padding: 0px;"
-              title="Fit height"
-              type="button"
+              <button
+                aria-label="Fit width"
+                class="pdfme-ui-fit-width"
+                style="display: inline-flex; align-items: center; justify-content: center; gap: 0px; cursor: pointer; font-size: 14px; line-height: 1; border-radius: 6px; height: 32px; padding: 0px; box-sizing: border-box; transition: all 0.1s; opacity: 1; user-select: none; white-space: nowrap; background: transparent; border: 1px solid transparent; color: rgba(0, 0, 0, 0.88); width: 32px; min-width: 32px;"
+                title="Fit width"
+                type="button"
+              >
+                <span>
+                  MoveHorizontal
+                </span>
+              </button>
+            </span>
+            <span
+              style="display: inline-flex;"
             >
-              MoveVertical
-            </button>
+              <button
+                aria-label="Fit height"
+                class="pdfme-ui-fit-height"
+                style="display: inline-flex; align-items: center; justify-content: center; gap: 0px; cursor: pointer; font-size: 14px; line-height: 1; border-radius: 6px; height: 32px; padding: 0px; box-sizing: border-box; transition: all 0.1s; opacity: 1; user-select: none; white-space: nowrap; background: transparent; border: 1px solid transparent; color: rgba(0, 0, 0, 0.88); width: 32px; min-width: 32px;"
+                title="Fit height"
+                type="button"
+              >
+                <span>
+                  MoveVertical
+                </span>
+              </button>
+            </span>
           </div>
         </div>
       </div>

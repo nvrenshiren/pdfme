@@ -1,9 +1,9 @@
 import React from 'react';
 import { LoaderCircle } from 'lucide-react';
-import { theme } from 'antd';
+import { useTheme } from '../contexts.js';
 
 const Spinner: React.FC = () => {
-  const { token } = theme.useToken();
+  const token = useTheme();
 
   const containerStyle: React.CSSProperties = {
     position: 'relative',

@@ -28,24 +28,26 @@ const mapDynamicVariables = (props: PropPanelWidgetProps) => {
     ]);
   }
 
-  const placeholderRowEl = document
-    .getElementById('placeholder-dynamic-var')
-    ?.closest('.ant-form-item') as HTMLElement;
-  if (!placeholderRowEl) {
-    throw new Error('Failed to find Ant form placeholder row to create dynamic variables inputs.');
+  // The wrapping form element may use display:flex which constrains field width; relax it.
+  if (rootElement.parentElement) {
+    (rootElement.parentElement as HTMLElement).style.display = 'block';
   }
-  placeholderRowEl.style.display = 'none';
-
-  // The wrapping form element has a display:flex which limits the width of the form fields, removing.
-  (rootElement.parentElement as HTMLElement).style.display = 'block';
 
   if (varNames.length > 0) {
-    for (let variableName of varNames) {
-      const varRow = placeholderRowEl.cloneNode(true) as HTMLElement;
+    for (const variableName of varNames) {
+      const varRow = document.createElement('div');
+      varRow.style.marginBottom = '8px';
 
-      const textarea = varRow.querySelector('textarea') as HTMLTextAreaElement;
+      const label = document.createElement('label');
+      label.innerText = variableName;
+      label.style.cssText = 'display: block; margin-bottom: 2px; font-size: 14px;';
+
+      const textarea = document.createElement('textarea');
       textarea.id = 'dynamic-var-' + variableName;
       textarea.value = variables[variableName];
+      textarea.rows = 2;
+      textarea.style.cssText =
+        'width: 100%; box-sizing: border-box; padding: 4px 8px; font-size: 14px; font-family: inherit; border: 1px solid #d9d9d9; border-radius: 6px; resize: vertical;';
       textarea.addEventListener('change', (e: Event) => {
         if (variableName in variables) {
           variables[variableName] = (e.target as HTMLTextAreaElement).value;
@@ -55,10 +57,8 @@ const mapDynamicVariables = (props: PropPanelWidgetProps) => {
         }
       });
 
-      const label = varRow.querySelector('label') as HTMLLabelElement;
-      label.innerText = variableName;
-
-      varRow.style.display = 'block';
+      varRow.appendChild(label);
+      varRow.appendChild(textarea);
       rootElement.appendChild(varRow);
     }
   } else {
@@ -104,19 +104,6 @@ export const propPanel: PropPanel<MultiVariableTextSchema> = {
             type: 'object',
             widget: 'mapDynamicVariables',
             bind: false,
-            span: 24,
-          },
-          placeholderDynamicVar: {
-            title: i18n('schemas.mvt.placeholderDynamicVariable'),
-            type: 'string',
-            format: 'textarea',
-            props: {
-              id: 'placeholder-dynamic-var',
-              autoSize: {
-                minRows: 2,
-                maxRows: 5,
-              },
-            },
             span: 24,
           },
         },

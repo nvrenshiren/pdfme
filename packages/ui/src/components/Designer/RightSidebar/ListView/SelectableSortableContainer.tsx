@@ -19,10 +19,9 @@ import {
 } from '@dnd-kit/sortable';
 import { SchemaForUI } from '@pdfme/common';
 import type { SidebarProps } from '../../../../types.js';
-import { PluginsRegistry } from '../../../../contexts.js';
+import { PluginsRegistry, useTheme } from '../../../../contexts.js';
 import Item from './Item.js';
 import SelectableSortableItem from './SelectableSortableItem.js';
-import { theme } from 'antd';
 import PluginIcon from '../../PluginIcon.js';
 
 const SelectableSortableContainer = (
@@ -31,7 +30,7 @@ const SelectableSortableContainer = (
     'schemas' | 'onEdit' | 'onSortEnd' | 'hoveringSchemaId' | 'onChangeHoveringSchemaId'
   >,
 ) => {
-  const { token } = theme.useToken();
+  const token = useTheme();
   const { schemas, onEdit, onSortEnd, hoveringSchemaId, onChangeHoveringSchemaId } = props;
   const [selectedSchemas, setSelectedSchemas] = useState<SchemaForUI[]>([]);
   const [dragOverlaidItems, setClonedItems] = useState<SchemaForUI[] | null>(null);

@@ -1,8 +1,7 @@
 import React from 'react';
-import { ConfigProvider as ThemeConfigProvider } from 'antd';
-import { I18nContext, FontContext, PluginsRegistry, OptionsContext } from '../contexts.js';
+import { I18nContext, FontContext, PluginsRegistry, OptionsContext, ThemeContext } from '../contexts.js';
 import { i18n, getDict } from '../i18n.js';
-import { defaultTheme } from '../theme.js';
+import { resolveToken } from '../theme.js';
 import type { Dict, Font, Lang, UIOptions, PluginRegistry } from '@pdfme/common';
 
 type Props = {
@@ -46,13 +45,7 @@ const deepMerge = <T extends Record<string, unknown>, U extends Record<string, u
 };
 
 const AppContextProvider = ({ children, lang, font, plugins, options }: Props) => {
-  let theme = defaultTheme;
-  if (options.theme) {
-    theme = deepMerge(
-      theme as unknown as Record<string, unknown>,
-      options.theme as unknown as Record<string, unknown>,
-    ) as typeof theme;
-  }
+  const token = resolveToken(options.theme);
 
   let dict = getDict(lang);
   if (options.labels) {
@@ -63,7 +56,7 @@ const AppContextProvider = ({ children, lang, font, plugins, options }: Props) =
   }
 
   return (
-    <ThemeConfigProvider theme={theme}>
+    <ThemeContext.Provider value={token}>
       <I18nContext.Provider value={(key: keyof Dict) => i18n(key, dict)}>
         <FontContext.Provider value={font}>
           <PluginsRegistry.Provider value={plugins}>
@@ -71,7 +64,7 @@ const AppContextProvider = ({ children, lang, font, plugins, options }: Props) =
           </PluginsRegistry.Provider>
         </FontContext.Provider>
       </I18nContext.Provider>
-    </ThemeConfigProvider>
+    </ThemeContext.Provider>
   );
 };
 

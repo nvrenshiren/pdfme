@@ -1,5 +1,6 @@
 import React from 'react';
-import { theme, Button } from 'antd';
+import { useTheme } from '../../../contexts.js';
+import { Button } from '../../primitives/index.js';
 import type { SidebarProps } from '../../../types.js';
 import { RIGHT_SIDEBAR_WIDTH, DESIGNER_CLASSNAME } from '../../../constants.js';
 import { ArrowLeft, ArrowRight } from 'lucide-react';
@@ -9,7 +10,7 @@ import DetailView from './DetailView/index.js';
 const Sidebar = (props: SidebarProps) => {
   const { sidebarOpen, setSidebarOpen, activeElements, schemas } = props;
 
-  const { token } = theme.useToken();
+  const token = useTheme();
   const getActiveSchemas = () =>
     schemas.filter((s) => activeElements.map((ae) => ae.id).includes(s.id));
   const getLastActiveSchema = () => {

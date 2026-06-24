@@ -9,7 +9,7 @@ import React, {
   forwardRef,
   useCallback,
 } from 'react';
-import { theme, Button } from 'antd';
+import { Button } from '../../primitives/index.js';
 import MoveableComponent, { OnDrag, OnRotate, OnResize } from 'react-moveable';
 import {
   ZOOM,
@@ -20,7 +20,7 @@ import {
   isBlankPdf,
   replacePlaceholders,
 } from '@pdfme/common';
-import { PluginsRegistry } from '../../../contexts.js';
+import { PluginsRegistry, useTheme } from '../../../contexts.js';
 import { X } from 'lucide-react';
 import { RULER_HEIGHT, RIGHT_SIDEBAR_WIDTH, DESIGNER_CLASSNAME } from '../../../constants.js';
 import { usePrevious } from '../../../hooks.js';
@@ -43,7 +43,7 @@ const isTopLeftResize = (d: string) => d === '-1,-1' || d === '-1,0' || d === '0
 const normalizeRotate = (angle: number) => ((angle % 360) + 360) % 360;
 
 const DeleteButton = ({ activeElements: aes }: { activeElements: HTMLElement[] }) => {
-  const { token } = theme.useToken();
+  const token = useTheme();
 
   const size = 26;
   const top = Math.min(...aes.map(({ style }) => fmt4Num(style.top)));
@@ -121,7 +121,7 @@ const Canvas = (props: Props, ref: Ref<HTMLDivElement>) => {
     paperRefs,
     sidebarOpen,
   } = props;
-  const { token } = theme.useToken();
+  const token = useTheme();
   const pluginsRegistry = useContext(PluginsRegistry);
   const verticalGuides = useRef<GuidesInterface[]>([]);
   const horizontalGuides = useRef<GuidesInterface[]>([]);

@@ -1,6 +1,6 @@
-import { Space, Button, Form } from 'antd';
+import { Button, ButtonGroup, FormItem } from '../../../primitives/index.js';
 import React from 'react';
-import type { PropPanelWidgetProps } from '@pdfme/common';
+import type { ChangeSchemas, PropPanelSchema, SchemaForUI, Size } from '@pdfme/common';
 import { DESIGNER_CLASSNAME } from '../../../../constants.js';
 import {
   AlignStartVertical,
@@ -14,60 +14,37 @@ import {
 } from 'lucide-react';
 import { round } from '../../../../helper.js';
 
-const AlignWidget = (props: PropPanelWidgetProps) => {
-  const { activeElements, changeSchemas, schemas, pageSize, schema } = props;
-  const align = (type: 'left' | 'center' | 'right' | 'top' | 'middle' | 'bottom') => {
+interface AlignWidgetProps {
+  activeElements: HTMLElement[];
+  changeSchemas: ChangeSchemas;
+  schemas: SchemaForUI[];
+  pageSize: Size;
+  schema?: PropPanelSchema;
+}
+
+const AlignWidget = (props: AlignWidgetProps) => {
+  const { activeElements, changeSchemas, schemas, schema, pageSize } = props;
+
+  const selectedSchemas = () => {
     const ids = activeElements.map((ae) => ae.id);
-    const ass = schemas.filter((s) => ids.includes(s.id));
+    return schemas.filter((s) => ids.includes(s.id));
+  };
 
+  const align = (type: 'left' | 'center' | 'right' | 'top' | 'middle' | 'bottom') => {
+    const targets = selectedSchemas();
     const isVertical = ['left', 'center', 'right'].includes(type);
-    const tgtPos = isVertical ? 'x' : 'y';
-    const tgtSize = isVertical ? 'width' : 'height';
-    const isSingle = ass.length === 1;
-    // Access pageSize property safely with proper type assertion
-    const root =
-      pageSize && typeof pageSize === 'object'
-        ? tgtSize === 'width'
-          ? (pageSize as unknown as { width: number }).width
-          : (pageSize as unknown as { height: number }).height
-        : 0;
+    const tgtPos: 'x' | 'y' = isVertical ? 'x' : 'y';
+    const tgtSize: 'width' | 'height' = isVertical ? 'width' : 'height';
+    const isSingle = targets.length === 1;
+    const root = pageSize[tgtSize];
 
-    // Access position properties safely with proper type assertion
-    const min = isSingle
-      ? 0
-      : Math.min(
-          ...ass.map((as) => {
-            // Safely access position property with proper type assertion
-            const position =
-              as.position && typeof as.position === 'object'
-                ? (as.position as unknown as { x: number; y: number })
-                : { x: 0, y: 0 };
-            return tgtPos === 'x' ? position.x : position.y;
-          }),
-        );
+    const min = isSingle ? 0 : Math.min(...targets.map((s) => s.position[tgtPos]));
     const max = isSingle
       ? root
-      : Math.max(
-          ...ass.map((as) => {
-            // Safely access position and size properties with proper type assertion
-            const position =
-              as.position && typeof as.position === 'object'
-                ? (as.position as unknown as { x: number; y: number })
-                : { x: 0, y: 0 };
-            const posValue = tgtPos === 'x' ? position.x : position.y;
-
-            // Safely access width/height with proper type assertion
-            const asWithSize = as as unknown as { width?: number; height?: number };
-            const sizeValue = tgtSize === 'width' ? asWithSize.width || 0 : asWithSize.height || 0;
-
-            return posValue + sizeValue;
-          }),
-        );
+      : Math.max(...targets.map((s) => s.position[tgtPos] + s[tgtSize]));
 
     let basePos = min;
-    // Define adjust function with consistent parameter usage
     let adjust: (size: number) => number = () => 0;
-
     if (['center', 'middle'].includes(type)) {
       basePos = (min + max) / 2;
       adjust = (size: number): number => size / 2;
@@ -77,87 +54,36 @@ const AlignWidget = (props: PropPanelWidgetProps) => {
     }
 
     changeSchemas(
-      ass.map((as) => {
-        // Safely access size property with proper type assertion
-        const asWithSize = as as unknown as { width?: number; height?: number; id: string };
-        const sizeValue = tgtSize === 'width' ? asWithSize.width || 0 : asWithSize.height || 0;
-
-        return {
-          key: `position.${tgtPos}`,
-          value: round(basePos - adjust(sizeValue), 2),
-          schemaId: asWithSize.id,
-        };
-      }),
+      targets.map((s) => ({
+        key: `position.${tgtPos}`,
+        value: round(basePos - adjust(s[tgtSize]), 2),
+        schemaId: s.id,
+      })),
     );
   };
 
   const distribute = (type: 'vertical' | 'horizontal') => {
-    const ids = activeElements.map((ae) => ae.id);
-    const ass = schemas.filter((s) => ids.includes(s.id));
-
+    const targets = selectedSchemas();
     const isVertical = type === 'vertical';
-    const tgtPos = isVertical ? 'y' : 'x';
-    const tgtSize = isVertical ? 'height' : 'width';
+    const tgtPos: 'x' | 'y' = isVertical ? 'y' : 'x';
+    const tgtSize: 'width' | 'height' = isVertical ? 'height' : 'width';
 
-    // Safely access position property with proper type assertion
-    const min = Math.min(
-      ...ass.map((as) => {
-        const position =
-          as.position && typeof as.position === 'object'
-            ? (as.position as unknown as { x: number; y: number })
-            : { x: 0, y: 0 };
-        return tgtPos === 'x' ? position.x : position.y;
-      }),
-    );
+    const min = Math.min(...targets.map((s) => s.position[tgtPos]));
+    const max = Math.max(...targets.map((s) => s.position[tgtPos] + s[tgtSize]));
 
-    // Safely access position and size properties with proper type assertion
-    const max = Math.max(
-      ...ass.map((as) => {
-        const position =
-          as.position && typeof as.position === 'object'
-            ? (as.position as unknown as { x: number; y: number })
-            : { x: 0, y: 0 };
-        const posValue = tgtPos === 'x' ? position.x : position.y;
-
-        // Safely access width/height with proper type assertion
-        const asWithSize = as as unknown as { width?: number; height?: number };
-        const sizeValue = tgtSize === 'width' ? asWithSize.width || 0 : asWithSize.height || 0;
-
-        return posValue + sizeValue;
-      }),
-    );
-
-    if (ass.length < 3) return;
+    if (targets.length < 3) return;
 
     const boxPos = min;
     const boxSize = max - min;
-    // Safely access size property with proper type assertion
-    const sum = ass.reduce((acc, cur) => {
-      const curWithSize = cur as unknown as { width?: number; height?: number };
-      const sizeValue = tgtSize === 'width' ? curWithSize.width || 0 : curWithSize.height || 0;
-      return acc + sizeValue;
-    }, 0);
-    const remain = boxSize - sum;
-    const unit = remain / (ass.length - 1);
+    const sum = targets.reduce((acc, cur) => acc + cur[tgtSize], 0);
+    const unit = (boxSize - sum) / (targets.length - 1);
 
     let prev = 0;
     changeSchemas(
-      ass.map((as, index) => {
-        // Safely access size property of previous element with proper type assertion
-        const prevSize =
-          index === 0
-            ? 0
-            : (() => {
-                const prevAs = ass[index - 1] as unknown as { width?: number; height?: number };
-                return tgtSize === 'width' ? prevAs.width || 0 : prevAs.height || 0;
-              })();
-
+      targets.map((s, index) => {
+        const prevSize = index === 0 ? 0 : targets[index - 1][tgtSize];
         prev += index === 0 ? 0 : prevSize + unit;
-        const value = round(boxPos + prev, 2);
-
-        // Safely access id with proper type assertion
-        const asWithId = as as unknown as { id: string };
-        return { key: `position.${tgtPos}`, value, schemaId: asWithId.id };
+        return { key: `position.${tgtPos}`, value: round(boxPos + prev, 2), schemaId: s.id };
       }),
     );
   };
@@ -209,8 +135,8 @@ const AlignWidget = (props: PropPanelWidgetProps) => {
   ];
 
   return (
-    <Form.Item label={schema?.title}>
-      <Space.Compact>
+    <FormItem label={schema?.title}>
+      <ButtonGroup>
         {layoutBtns.map((btn) => (
           <Button
             className={DESIGNER_CLASSNAME + 'align-' + btn.id}
@@ -220,8 +146,8 @@ const AlignWidget = (props: PropPanelWidgetProps) => {
             {...btn}
           />
         ))}
-      </Space.Compact>
-    </Form.Item>
+      </ButtonGroup>
+    </FormItem>
   );
 };
 

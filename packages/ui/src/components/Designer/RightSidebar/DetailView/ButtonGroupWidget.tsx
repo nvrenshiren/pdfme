@@ -1,6 +1,7 @@
-import { Space, Button, Form, theme } from 'antd';
+import { Button, ButtonGroup, FormItem } from '../../../primitives/index.js';
+import { useTheme } from '../../../../contexts.js';
 import React from 'react';
-import type { PropPanelWidgetProps, SchemaForUI } from '@pdfme/common';
+import type { ChangeSchemas, PropPanelSchema, SchemaForUI } from '@pdfme/common';
 import { getSameTypeBulkUpdateSchemas } from './schemaChangeHelpers.js';
 interface ButtonConfig {
   key: string;
@@ -9,9 +10,17 @@ interface ButtonConfig {
   value?: string;
 }
 
-const ButtonGroupWidget = (props: PropPanelWidgetProps) => {
+interface ButtonGroupWidgetProps {
+  activeElements: HTMLElement[];
+  activeSchema: SchemaForUI;
+  changeSchemas: ChangeSchemas;
+  schemas: SchemaForUI[];
+  schema?: PropPanelSchema;
+}
+
+const ButtonGroupWidget = (props: ButtonGroupWidgetProps) => {
   const { activeElements, activeSchema, changeSchemas, schemas, schema } = props;
-  const { token } = theme.useToken();
+  const token = useTheme();
   const buttons = Array.isArray(schema?.buttons) ? (schema.buttons as ButtonConfig[]) : [];
 
   const getSelectedSchemas = () => {
@@ -66,8 +75,8 @@ const ButtonGroupWidget = (props: PropPanelWidgetProps) => {
   };
 
   return (
-    <Form.Item>
-      <Space.Compact>
+    <FormItem>
+      <ButtonGroup>
         {buttons.map((btn: ButtonConfig, index: number) => {
           const active = isActive(btn);
           return (
@@ -84,8 +93,8 @@ const ButtonGroupWidget = (props: PropPanelWidgetProps) => {
             />
           );
         })}
-      </Space.Compact>
-    </Form.Item>
+      </ButtonGroup>
+    </FormItem>
   );
 };
 

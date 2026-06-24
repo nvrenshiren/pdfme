@@ -24,42 +24,44 @@ exports[`Designer snapshot 1`] = `
           style="visibility: visible;"
         >
           <button
-            class="ant-btn ant-btn-default ant-btn-color-default ant-btn-variant-outlined pdfme-designer-plugin-text"
-            style="width: 35px; height: 35px; margin-top: 0.25rem; padding: 0.25rem;"
+            class="pdfme-designer-plugin-text"
+            style="display: inline-flex; align-items: center; justify-content: center; gap: 0px; cursor: pointer; font-size: 14px; line-height: 1; border-radius: 6px; height: 35px; padding: 0.25rem; box-sizing: border-box; transition: all 0.1s; opacity: 1; user-select: none; white-space: nowrap; background: rgb(255, 255, 255); border: 1px solid rgb(217, 217, 217); color: rgba(0, 0, 0, 0.88); width: 35px; margin-top: 0.25rem;"
             type="button"
           >
-            <div
-              style="color: rgba(0, 0, 0, 0.88); display: flex; justify-content: center;"
-              title="text"
-            >
-              <svg
-                fill="none"
-                height="24"
-                stroke="currentColor"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                viewBox="0 0 24 24"
-                width="24"
-                xmlns="http://www.w3.org/2000/svg"
+            <span>
+              <div
+                style="color: rgba(0, 0, 0, 0.88); display: flex; justify-content: center;"
+                title="text"
               >
-                <path
-                  d="M12 20h-1a2 2 0 0 1-2-2 2 2 0 0 1-2 2H6"
-                />
-                <path
-                  d="M13 8h7a2 2 0 0 1 2 2v4a2 2 0 0 1-2 2h-7"
-                />
-                <path
-                  d="M5 16H4a2 2 0 0 1-2-2v-4a2 2 0 0 1 2-2h1"
-                />
-                <path
-                  d="M6 4h1a2 2 0 0 1 2 2 2 2 0 0 1 2-2h1"
-                />
-                <path
-                  d="M9 6v12"
-                />
-              </svg>
-            </div>
+                <svg
+                  fill="none"
+                  height="24"
+                  stroke="currentColor"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  viewBox="0 0 24 24"
+                  width="24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M12 20h-1a2 2 0 0 1-2-2 2 2 0 0 1-2 2H6"
+                  />
+                  <path
+                    d="M13 8h7a2 2 0 0 1 2 2v4a2 2 0 0 1-2 2h-7"
+                  />
+                  <path
+                    d="M5 16H4a2 2 0 0 1-2-2v-4a2 2 0 0 1 2-2h1"
+                  />
+                  <path
+                    d="M6 4h1a2 2 0 0 1 2 2 2 2 0 0 1 2-2h1"
+                  />
+                  <path
+                    d="M9 6v12"
+                  />
+                </svg>
+              </div>
+            </span>
           </button>
         </div>
       </div>
@@ -74,43 +76,45 @@ exports[`Designer snapshot 1`] = `
           style="visibility: visible;"
         >
           <button
-            class="ant-btn ant-btn-default ant-btn-color-default ant-btn-variant-outlined pdfme-designer-plugin-image"
-            style="width: 35px; height: 35px; margin-top: 0.25rem; padding: 0.25rem;"
+            class="pdfme-designer-plugin-image"
+            style="display: inline-flex; align-items: center; justify-content: center; gap: 0px; cursor: pointer; font-size: 14px; line-height: 1; border-radius: 6px; height: 35px; padding: 0.25rem; box-sizing: border-box; transition: all 0.1s; opacity: 1; user-select: none; white-space: nowrap; background: rgb(255, 255, 255); border: 1px solid rgb(217, 217, 217); color: rgba(0, 0, 0, 0.88); width: 35px; margin-top: 0.25rem;"
             type="button"
           >
-            <div
-              style="color: rgba(0, 0, 0, 0.88); display: flex; justify-content: center;"
-              title="image"
-            >
-              <svg
-                fill="none"
-                height="24"
-                stroke="currentColor"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                viewBox="0 0 24 24"
-                width="24"
-                xmlns="http://www.w3.org/2000/svg"
+            <span>
+              <div
+                style="color: rgba(0, 0, 0, 0.88); display: flex; justify-content: center;"
+                title="image"
               >
-                <rect
-                  height="18"
-                  rx="2"
-                  ry="2"
-                  width="18"
-                  x="3"
-                  y="3"
-                />
-                <circle
-                  cx="9"
-                  cy="9"
-                  r="2"
-                />
-                <path
-                  d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21"
-                />
-              </svg>
-            </div>
+                <svg
+                  fill="none"
+                  height="24"
+                  stroke="currentColor"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  viewBox="0 0 24 24"
+                  width="24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <rect
+                    height="18"
+                    rx="2"
+                    ry="2"
+                    width="18"
+                    x="3"
+                    y="3"
+                  />
+                  <circle
+                    cx="9"
+                    cy="9"
+                    r="2"
+                  />
+                  <path
+                    d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21"
+                  />
+                </svg>
+              </div>
+            </span>
           </button>
         </div>
       </div>
@@ -132,54 +136,76 @@ exports[`Designer snapshot 1`] = `
             <div
               style="display: flex; align-items: center; justify-content: center; flex-wrap: wrap; row-gap: 0px;"
             >
-              <button
-                aria-label="Zoom out"
-                class="ant-btn ant-btn-text ant-btn-color-default ant-btn-variant-text pdfme-ui-zoom-out"
-                style="width: 32px; min-width: 32px; height: 32px; padding: 0px;"
-                title="Zoom out"
-                type="button"
-              >
-                Minus
-              </button>
               <span
-                class="ant-typography"
-                style="color: rgb(255, 255, 255); font-size: 14px; margin: 8px; min-width: 44px; text-align: center; white-space: nowrap;"
+                style="display: inline-flex;"
               >
-                <strong>
-                  100
-                  %
-                </strong>
+                <button
+                  aria-label="Zoom out"
+                  class="pdfme-ui-zoom-out"
+                  style="display: inline-flex; align-items: center; justify-content: center; gap: 0px; cursor: pointer; font-size: 14px; line-height: 1; border-radius: 6px; height: 32px; padding: 0px; box-sizing: border-box; transition: all 0.1s; opacity: 1; user-select: none; white-space: nowrap; background: transparent; border: 1px solid transparent; color: rgba(0, 0, 0, 0.88); width: 32px; min-width: 32px;"
+                  title="Zoom out"
+                  type="button"
+                >
+                  <span>
+                    Minus
+                  </span>
+                </button>
               </span>
-              <button
-                aria-label="Zoom in"
-                class="ant-btn ant-btn-text ant-btn-color-default ant-btn-variant-text pdfme-ui-zoom-in"
-                style="width: 32px; min-width: 32px; height: 32px; padding: 0px;"
-                title="Zoom in"
-                type="button"
+              <span
+                class="pdfme-ui-zoom-label"
+                style="color: rgb(255, 255, 255); font-weight: 600; font-size: 14px; margin: 8px; min-width: 44px; text-align: center; white-space: nowrap;"
               >
-                Plus
-              </button>
+                100
+                %
+              </span>
+              <span
+                style="display: inline-flex;"
+              >
+                <button
+                  aria-label="Zoom in"
+                  class="pdfme-ui-zoom-in"
+                  style="display: inline-flex; align-items: center; justify-content: center; gap: 0px; cursor: pointer; font-size: 14px; line-height: 1; border-radius: 6px; height: 32px; padding: 0px; box-sizing: border-box; transition: all 0.1s; opacity: 1; user-select: none; white-space: nowrap; background: transparent; border: 1px solid transparent; color: rgba(0, 0, 0, 0.88); width: 32px; min-width: 32px;"
+                  title="Zoom in"
+                  type="button"
+                >
+                  <span>
+                    Plus
+                  </span>
+                </button>
+              </span>
               <div
                 style="width: 1px; height: 24px; margin: 0px 6px; background-color: rgb(255, 255, 255); opacity: 0.45;"
               />
-              <button
-                aria-label="Fit width"
-                class="ant-btn ant-btn-text ant-btn-color-default ant-btn-variant-text pdfme-ui-fit-width"
-                style="width: 32px; min-width: 32px; height: 32px; padding: 0px;"
-                title="Fit width"
-                type="button"
+              <span
+                style="display: inline-flex;"
               >
-                MoveHorizontal
-              </button>
-              <button
-                aria-label="Fit height"
-                class="ant-btn ant-btn-text ant-btn-color-default ant-btn-variant-text pdfme-ui-fit-height"
-                style="width: 32px; min-width: 32px; height: 32px; padding: 0px;"
-                title="Fit height"
-                type="button"
+                <button
+                  aria-label="Fit width"
+                  class="pdfme-ui-fit-width"
+                  style="display: inline-flex; align-items: center; justify-content: center; gap: 0px; cursor: pointer; font-size: 14px; line-height: 1; border-radius: 6px; height: 32px; padding: 0px; box-sizing: border-box; transition: all 0.1s; opacity: 1; user-select: none; white-space: nowrap; background: transparent; border: 1px solid transparent; color: rgba(0, 0, 0, 0.88); width: 32px; min-width: 32px;"
+                  title="Fit width"
+                  type="button"
+                >
+                  <span>
+                    MoveHorizontal
+                  </span>
+                </button>
+              </span>
+              <span
+                style="display: inline-flex;"
               >
-                MoveVertical
-              </button>
+                <button
+                  aria-label="Fit height"
+                  class="pdfme-ui-fit-height"
+                  style="display: inline-flex; align-items: center; justify-content: center; gap: 0px; cursor: pointer; font-size: 14px; line-height: 1; border-radius: 6px; height: 32px; padding: 0px; box-sizing: border-box; transition: all 0.1s; opacity: 1; user-select: none; white-space: nowrap; background: transparent; border: 1px solid transparent; color: rgba(0, 0, 0, 0.88); width: 32px; min-width: 32px;"
+                  title="Fit height"
+                  type="button"
+                >
+                  <span>
+                    MoveVertical
+                  </span>
+                </button>
+              </span>
             </div>
           </div>
         </div>
@@ -189,15 +215,11 @@ exports[`Designer snapshot 1`] = `
         style="position: absolute; right: 0px; z-index: 1; height: 100%; width: 400px;"
       >
         <button
-          class="ant-btn ant-btn-default ant-btn-color-default ant-btn-variant-outlined ant-btn-icon-only pdfme-designer-sidebar-toggle"
-          style="position: absolute; display: flex; align-items: center; justify-content: center; top: 14px; right: 16px; padding-top: 2px; z-index: 100;"
+          class="pdfme-designer-sidebar-toggle"
+          style="display: flex; align-items: center; justify-content: center; gap: 0px; cursor: pointer; font-size: 14px; line-height: 1; border-radius: 6px; height: 32px; box-sizing: border-box; transition: all 0.1s; opacity: 1; user-select: none; white-space: nowrap; background: rgb(255, 255, 255); border: 1px solid rgb(217, 217, 217); color: rgba(0, 0, 0, 0.88); position: absolute; top: 14px; right: 16px; padding: 2px 15px 4px; z-index: 100;"
           type="button"
         >
-          <span
-            class="ant-btn-icon"
-          >
-            ArrowRight
-          </span>
+          ArrowRight
         </button>
         <div
           style="width: 400px; height: 100%; display: flex; top: 0px; right: 0px; position: absolute; font-family: "Open Sans", sans-serif; box-sizing: border-box; background: rgb(245, 245, 245); border-left: 1px solid rgba(5, 5, 5, 0.06);"
@@ -213,18 +235,14 @@ exports[`Designer snapshot 1`] = `
                 style="min-height: 40px; display: flex; align-items: center; justify-content: center;"
               >
                 <span
-                  class="ant-typography"
-                  style="text-align: center; width: 100%;"
+                  style="color: rgba(0, 0, 0, 0.88); font-weight: 600; text-align: center; width: 100%;"
                 >
-                  <strong>
-                    Field List
-                  </strong>
+                  Field List
                 </span>
               </div>
               <div
-                class="ant-divider ant-divider-horizontal"
-                role="separator"
-                style="margin-top: 8px; margin-bottom: 0px;"
+                aria-hidden="true"
+                style="height: 1px; width: 100%; background: rgba(5, 5, 5, 0.06); margin: 8px 0px 0px;"
               />
             </div>
             <div
@@ -240,15 +258,10 @@ exports[`Designer snapshot 1`] = `
                     style="display: flex; align-items: center; cursor: pointer; gap: 0.5rem; border: 1px solid transparent;"
                   >
                     <button
-                      class="ant-btn ant-btn-default ant-btn-color-default ant-btn-variant-outlined ant-btn-icon-only"
-                      style="display: flex; align-items: center; background: none; box-shadow: none; border: medium; padding-left: 0.25rem;"
+                      style="display: flex; align-items: center; justify-content: center; gap: 0px; cursor: pointer; font-size: 14px; line-height: 1; border-radius: 6px; height: 32px; box-sizing: border-box; transition: all 0.1s; opacity: 1; user-select: none; white-space: nowrap; background: none; border: medium; color: rgba(0, 0, 0, 0.88); box-shadow: none; padding: 4px 15px 4px 0.25rem;"
                       type="button"
                     >
-                      <span
-                        class="ant-btn-icon"
-                      >
-                        GripVertical
-                      </span>
+                      GripVertical
                     </button>
                     <div
                       style="color: rgba(0, 0, 0, 0.88); display: flex; justify-content: center;"
@@ -283,8 +296,7 @@ exports[`Designer snapshot 1`] = `
                       </svg>
                     </div>
                     <span
-                      class="ant-typography"
-                      style="overflow: hidden; white-space: nowrap; text-overflow: ellipsis; width: 100%;"
+                      style="color: rgba(0, 0, 0, 0.88); overflow: hidden; white-space: nowrap; text-overflow: ellipsis; width: 100%;"
                       title="Edit"
                     >
                       field1
@@ -298,15 +310,10 @@ exports[`Designer snapshot 1`] = `
                     style="display: flex; align-items: center; cursor: pointer; gap: 0.5rem; border: 1px solid transparent;"
                   >
                     <button
-                      class="ant-btn ant-btn-default ant-btn-color-default ant-btn-variant-outlined ant-btn-icon-only"
-                      style="display: flex; align-items: center; background: none; box-shadow: none; border: medium; padding-left: 0.25rem;"
+                      style="display: flex; align-items: center; justify-content: center; gap: 0px; cursor: pointer; font-size: 14px; line-height: 1; border-radius: 6px; height: 32px; box-sizing: border-box; transition: all 0.1s; opacity: 1; user-select: none; white-space: nowrap; background: none; border: medium; color: rgba(0, 0, 0, 0.88); box-shadow: none; padding: 4px 15px 4px 0.25rem;"
                       type="button"
                     >
-                      <span
-                        class="ant-btn-icon"
-                      >
-                        GripVertical
-                      </span>
+                      GripVertical
                     </button>
                     <div
                       style="color: rgba(0, 0, 0, 0.88); display: flex; justify-content: center;"
@@ -342,8 +349,7 @@ exports[`Designer snapshot 1`] = `
                       </svg>
                     </div>
                     <span
-                      class="ant-typography"
-                      style="overflow: hidden; white-space: nowrap; text-overflow: ellipsis; width: 100%;"
+                      style="color: rgba(0, 0, 0, 0.88); overflow: hidden; white-space: nowrap; text-overflow: ellipsis; width: 100%;"
                       title="Edit"
                     >
                       field2
@@ -369,18 +375,6 @@ exports[`Designer snapshot 1`] = `
                 style="position: fixed; top: 0px; left: 0px; width: 1px; height: 1px; margin: -1px; border: 0px; padding: 0px; overflow: hidden; clip: rect(0px); clip-path: inset(100%); white-space: nowrap;"
               />
             </div>
-            <div
-              style="display: flex; flex-shrink: 0; align-items: center; justify-content: flex-end; gap: 8px; padding: 16px;"
-            >
-              <button
-                class="ant-btn ant-btn-text ant-btn-color-default ant-btn-variant-text ant-btn-sm pdfme-designer-bulk-update"
-                type="button"
-              >
-                <u>
-                  Bulk update field names
-                </u>
-              </button>
-            </div>
           </div>
         </div>
       </div>
@@ -390,7 +384,7 @@ exports[`Designer snapshot 1`] = `
       >
         <div
           class="selecto-selection rCS179bs95 pdfme-selecto"
-          style="background-color: rgb(22, 119, 255); opacity: 0.75; border-color: rgb(145, 202, 255);"
+          style="background-color: rgb(56, 160, 255); opacity: 0.75; border-color: rgb(179, 226, 255);"
         />
         <div
           style="transform: scale(1); transform-origin: top left; height: 1px; width: 1px;"
@@ -456,7 +450,7 @@ exports[`Designer snapshot 1`] = `
               data-able-rotatable="true"
               data-able-snappable="true"
               data-styled-id="rCS1bhdyl6"
-              style="position: absolute; display: none; visibility: visible; transform: translate3d(0px, 0px, 0); --zoom: 1; --zoompx: 1px; --moveable-color: #1677ff;"
+              style="position: absolute; display: none; visibility: visible; transform: translate3d(0px, 0px, 0); --zoom: 1; --zoompx: 1px; --moveable-color: #38a0ff;"
             >
               <div
                 class="moveable-control moveable-direction moveable-n moveable-resizable"
@@ -512,7 +506,7 @@ exports[`Designer snapshot 1`] = `
               >
                 <div
                   class="moveable-line moveable-rotation-line"
-                  style="transform: scaleX(1); --moveable-color: #1677ff;"
+                  style="transform: scaleX(1); --moveable-color: #38a0ff;"
                 />
                 <div
                   class="moveable-control moveable-rotation-control"
@@ -528,35 +522,35 @@ exports[`Designer snapshot 1`] = `
                 data-direction=""
                 data-line-key="render-line-0"
                 data-rotation="-1"
-                style="transform: translateY(-50%) translate(-0.5px, 0px) rotate(0rad) scaleY(1); width: 1px; --moveable-color: #1677ff;"
+                style="transform: translateY(-50%) translate(-0.5px, 0px) rotate(0rad) scaleY(1); width: 1px; --moveable-color: #38a0ff;"
               />
               <div
                 class="moveable-line moveable-direction"
                 data-direction=""
                 data-line-key="render-line-1"
                 data-rotation="-1"
-                style="transform: translateY(-50%) translate(0px, -0.5px) rotate(1.5707963267948966rad) scaleY(1); width: 1px; --moveable-color: #1677ff;"
+                style="transform: translateY(-50%) translate(0px, -0.5px) rotate(1.5707963267948966rad) scaleY(1); width: 1px; --moveable-color: #38a0ff;"
               />
               <div
                 class="moveable-line moveable-direction"
                 data-direction=""
                 data-line-key="render-line-2"
                 data-rotation="-1"
-                style="transform: translateY(-50%) translate(0.5px, 0px) rotate(3.141592653589793rad) scaleY(1); width: 1px; --moveable-color: #1677ff;"
+                style="transform: translateY(-50%) translate(0.5px, 0px) rotate(3.141592653589793rad) scaleY(1); width: 1px; --moveable-color: #38a0ff;"
               />
               <div
                 class="moveable-line moveable-direction"
                 data-direction=""
                 data-line-key="render-line-3"
                 data-rotation="-1"
-                style="transform: translateY(-50%) translate(0px, 0.5px) rotate(4.71238898038469rad) scaleY(1); width: 1px; --moveable-color: #1677ff;"
+                style="transform: translateY(-50%) translate(0px, 0.5px) rotate(4.71238898038469rad) scaleY(1); width: 1px; --moveable-color: #38a0ff;"
               />
             </div>
             <div>
               <div
                 class="selectable"
                 id="3"
-                style="position: absolute; cursor: pointer; height: 56.692913386499995px; width: 377.95275591px; top: 75.590551182px; left: 75.590551182px; transform: rotate(0deg); opacity: 1; outline: 1px dashed #1677ff;"
+                style="position: absolute; cursor: pointer; height: 56.692913386499995px; width: 377.95275591px; top: 75.590551182px; left: 75.590551182px; transform: rotate(0deg); opacity: 1; outline: 1px dashed #38a0ff;"
                 title="field1"
               >
                 <div
@@ -588,7 +582,7 @@ exports[`Designer snapshot 1`] = `
               <div
                 class="selectable"
                 id="4"
-                style="position: absolute; cursor: pointer; height: 151.181102364px; width: 377.95275591px; top: 132.2834645685px; left: 75.590551182px; transform: rotate(0deg); opacity: 1; outline: 1px dashed #1677ff;"
+                style="position: absolute; cursor: pointer; height: 151.181102364px; width: 377.95275591px; top: 132.2834645685px; left: 75.590551182px; transform: rotate(0deg); opacity: 1; outline: 1px dashed #38a0ff;"
                 title="field2"
               >
                 <div

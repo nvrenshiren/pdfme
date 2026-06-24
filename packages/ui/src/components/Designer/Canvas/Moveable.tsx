@@ -7,7 +7,7 @@ import MoveableComponent, {
   OnResize,
 } from 'react-moveable';
 import { uuid } from '../../../helper.js';
-import { theme } from 'antd';
+import { useTheme } from '../../../contexts.js';
 
 type Props = {
   target: HTMLElement[];
@@ -32,7 +32,7 @@ const baseClassName = 'pdfme-moveable';
 const MoveableView = MoveableComponent as unknown as React.ElementType;
 
 const Moveable = (props: Props, ref: Ref<MoveableComponent>) => {
-  const { token } = theme.useToken();
+  const token = useTheme();
   const instanceId = useRef(uuid());
   const uniqueClassName = `${baseClassName}-${instanceId.current}`;
 

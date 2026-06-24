@@ -1,10 +1,9 @@
 import React from 'react';
-import type * as CSS from 'csstype';
 import { ZOOM, BasePdf, isBlankPdf } from '@pdfme/common';
-import { theme } from 'antd';
+import { useTheme } from '../../../contexts.js';
 
-const getPaddingStyle = (i: number, p: number, color: string): CSS.Properties => {
-  const style: CSS.Properties = {
+const getPaddingStyle = (i: number, p: number, color: string): React.CSSProperties => {
+  const style: React.CSSProperties = {
     position: 'absolute',
     background: color,
     opacity: 0.25,
@@ -43,11 +42,12 @@ const getPaddingStyle = (i: number, p: number, color: string): CSS.Properties =>
 };
 
 const Padding = ({ basePdf }: { basePdf: BasePdf }) => {
+  const token = useTheme();
   return (
     <>
       {isBlankPdf(basePdf) &&
         basePdf.padding.map((p, i) => (
-          <div key={String(i)} style={getPaddingStyle(i, p, theme.useToken().token.colorError)} />
+          <div key={String(i)} style={getPaddingStyle(i, p, token.colorError)} />
         ))}
     </>
   );

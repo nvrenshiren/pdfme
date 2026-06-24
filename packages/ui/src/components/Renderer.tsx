@@ -10,9 +10,14 @@ import {
   UIOptions,
   cloneDeep,
 } from '@pdfme/common';
-import { theme as antdTheme } from 'antd';
 import { SELECTABLE_CLASSNAME } from '../constants.js';
-import { PluginsRegistry, OptionsContext, I18nContext, CacheContext } from '../contexts.js';
+import {
+  PluginsRegistry,
+  OptionsContext,
+  I18nContext,
+  CacheContext,
+  useTheme,
+} from '../contexts.js';
 
 type RendererProps = Omit<
   UIRenderProps<Schema>,
@@ -67,7 +72,7 @@ const Wrapper = ({
   isActive = false,
   selectable = true,
 }: RendererProps & { children: ReactNode }) => {
-  const { token } = antdTheme.useToken();
+  const token = useTheme();
   const isFormEditable = mode === 'form' && !schema.readOnly;
   const activateSchema = () => {
     if (isFormEditable) onChangeActiveSchemaId?.(schema.id);
@@ -131,7 +136,7 @@ const Renderer = (props: RendererProps) => {
   const pluginsRegistry = useContext(PluginsRegistry);
   const options = useContext(OptionsContext);
   const i18n = useContext(I18nContext) as (key: string) => string;
-  const { token: theme } = antdTheme.useToken();
+  const theme = useTheme();
 
   const ref = useRef<HTMLDivElement>(null);
   const _cache = useContext(CacheContext);

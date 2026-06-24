@@ -444,7 +444,7 @@ test('Preview toolbar can wrap controls on narrow viewports', async () => {
   const controlBar = container.querySelector('.pdfme-ui-control-bar') as HTMLElement;
   const toolbarWrapper = controlBar.parentElement as HTMLElement;
   const zoomGroup = container.querySelector('.pdfme-ui-zoom > div') as HTMLElement;
-  const zoomLabel = container.querySelector('.pdfme-ui-zoom .ant-typography') as HTMLElement;
+  const zoomLabel = container.querySelector('.pdfme-ui-zoom-label') as HTMLElement;
   const prevButton = container.querySelector('.pdfme-ui-page-prev') as HTMLElement;
 
   expect(toolbarWrapper.style.boxSizing).toBe('border-box');

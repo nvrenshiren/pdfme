@@ -1,10 +1,9 @@
 import React, { useContext } from 'react';
 import { useSortable } from '@dnd-kit/sortable';
 import { SchemaForUI } from '@pdfme/common';
-import { PluginsRegistry, I18nContext } from '../../../../contexts.js';
+import { PluginsRegistry, I18nContext, useTheme } from '../../../../contexts.js';
 import Item from './Item.js';
 import { useMountStatus } from '../../../../hooks.js';
-import { theme } from 'antd';
 import PluginIcon from '../../PluginIcon.js';
 
 interface Props {
@@ -27,7 +26,7 @@ const SelectableSortableItem = ({
   onMouseEnter,
   onMouseLeave,
 }: Props) => {
-  const { token } = theme.useToken();
+  const token = useTheme();
 
   const i18n = useContext(I18nContext);
   const pluginsRegistry = useContext(PluginsRegistry);

@@ -18,7 +18,7 @@ import CtlBar from './CtlBar.js';
 import Paper from './Paper.js';
 import Renderer from './Renderer.js';
 import { useUIPreProcessor, useScrollPageCursor, useZoom } from '../hooks.js';
-import { FontContext, OptionsContext } from '../contexts.js';
+import { FontContext, OptionsContext, useTheme } from '../contexts.js';
 import { SELECTABLE_CLASSNAME } from '../constants.js';
 import {
   template2SchemasList,
@@ -26,7 +26,6 @@ import {
   useMaxZoom,
   getDynamicHeightReflowChanges,
 } from '../helper.js';
-import { theme } from 'antd';
 
 const _cache = new Map<string | number, unknown>();
 
@@ -55,7 +54,7 @@ const Preview = ({
   onPageChange?: (pageInfo: { currentPage: number; totalPages: number }) => void;
   size: Size;
 }) => {
-  const { token } = theme.useToken();
+  const token = useTheme();
 
   const font = useContext(FontContext);
   const options = useContext(OptionsContext);
