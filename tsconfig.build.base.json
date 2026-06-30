@@ -12,6 +12,7 @@
     "strict": true,
     "types": ["node"],
     "typeRoots": ["node_modules/@types"],
-    "sourceMap": true
+    "sourceMap": true,
+    "allowJs": true
   }
 }
